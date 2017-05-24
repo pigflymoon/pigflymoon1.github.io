@@ -66,8 +66,7 @@ pagination_dir: page
 theme: yilia
 
 # Plugins
-plugins:
-- hexo-generator-cname
+plugins: hexo-generator-cname
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
