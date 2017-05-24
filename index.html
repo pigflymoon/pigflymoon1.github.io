@@ -151,31 +151,49 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-markdown-template" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/24/test/">Adding your SSH key to the ssh-agent</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/24/test/" class="archive-article-date">
-  	<time datetime="2017-05-24T00:46:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-24</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Start-the-ssh-agent-in-the-background"><a href="#Start-the-ssh-agent-in-the-background" class="headerlink" title="Start the ssh-agent in the background."></a>Start the ssh-agent in the background.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eval &quot;$(ssh-agent -s)&quot;</div></pre></td></tr></table></figure>
-<p>Agent pid 59566</p>
-<h3 id="If-you’re-using-macOS-Sierra-10-12-2-or-later-you-will-need-to-modify-your-ssh-config-file-to-automatically-load-keys-into-the-ssh-agent-and-store-passphrases-in-your-keychain"><a href="#If-you’re-using-macOS-Sierra-10-12-2-or-later-you-will-need-to-modify-your-ssh-config-file-to-automatically-load-keys-into-the-ssh-agent-and-store-passphrases-in-your-keychain" class="headerlink" title="If you’re using macOS Sierra 10.12.2 or later, you will need to modify your ~/.ssh/config file to automatically load keys into the ssh-agent and store passphrases in your keychain."></a>If you’re using macOS Sierra 10.12.2 or later, you will need to modify your ~/.ssh/config file to automatically load keys into the ssh-agent and store passphrases in your keychain.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Host *</div><div class="line"> AddKeysToAgent yes</div><div class="line"> UseKeychain yes</div><div class="line"> IdentityFile ~/.ssh/id_rsa</div></pre></td></tr></table></figure>
-<h3 id="Add-your-SSH-private-key-to-the-ssh-agent-and-store-your-passphrase-in-the-keychain-If-you-created-your-key-with-a-different-name-or-if-you-are-adding-an-existing-key-that-has-a-different-name-replace-id-rsa-in-the-command-with-the-name-of-your-private-key-file"><a href="#Add-your-SSH-private-key-to-the-ssh-agent-and-store-your-passphrase-in-the-keychain-If-you-created-your-key-with-a-different-name-or-if-you-are-adding-an-existing-key-that-has-a-different-name-replace-id-rsa-in-the-command-with-the-name-of-your-private-key-file" class="headerlink" title="Add your SSH private key to the ssh-agent and store your passphrase in the keychain. If you created your key with a different name, or if you are adding an existing key that has a different name, replace id_rsa in the command with the name of your private key file."></a>Add your SSH private key to the ssh-agent and store your passphrase in the keychain. If you created your key with a different name, or if you are adding an existing key that has a different name, replace id_rsa in the command with the name of your private key file.</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-add -K ~/.ssh/id_rsa</div></pre></td></tr></table></figure>
-<h3 id="Add-the-SSH-key-to-your-GitHub-account"><a href="#Add-the-SSH-key-to-your-GitHub-account" class="headerlink" title="Add the SSH key to your GitHub account."></a>Add the SSH key to your GitHub account.</h3>
+        <p>title: My test blog<br>date: 2017-05-24 15:23:31<br>description: test post template<br>categories: test<br>tags: [test]<br>toc:<br>feature: </p>
+<p><em>this text is italic</em></p>
+<p><del>to be changed</del></p>
+<h1 id="Level-1-header"><a href="#Level-1-header" class="headerlink" title="Level 1 header"></a>Level 1 header</h1><h2 id="Level-2-header"><a href="#Level-2-header" class="headerlink" title="Level 2 header"></a>Level 2 header</h2><h3 id="Level-3-header"><a href="#Level-3-header" class="headerlink" title="Level 3 header"></a>Level 3 header</h3><p><a href="http://google.com" target="_blank" rel="external">http://google.com</a> </p>
+<p><a href="http://google.com,com" target="_blank" rel="external"> google.com,com.</a></p>
+<ul>
+<li>dddddd</li>
+<li>dddddd<ul>
+<li>dddddd</li>
+<li>dddddd</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>ddddd</li>
+<li>ddddd</li>
+<li>ddddd</li>
+</ol>
+<p>| header 1 | header 2 |</p>
+<p>|—————|—————-|</p>
+<p>| header 1 |header 2|</p>
+<p>| header 1 |header 2|</p>
+<p>| Column header 1 | Column header 2 |</p>
+<p>|—————|—————-|</p>
+<p>| content 1 |content 2|</p>
+<p>| content 1 |content 2|</p>
+<blockquote>
+<p>ddsdfsfs<br>ddsdfsfs</p>
+<blockquote>
+<p>ddsdfsfs</p>
+<blockquote>
+<p>ddsdfsfs<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">function A()&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><code>var a = 1;</code></p>
+<p><img src="https://www.somesite.com/somedirectory/someimage.png" alt="image"></p>
+
       
 
       
@@ -187,7 +205,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/24/test/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/24/markdown-template/">展开全文 >></a>
         </p>
       
 
