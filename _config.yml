@@ -4,9 +4,10 @@
 
 # Site
 title: Lucy's journey
-subtitle:
-description:
+subtitle: 勇敢飞翔，宁静致远
+description: 爱哭爱闹爱笑爱吃爱读书爱玩
 author: Lucy
+email: pplflymoon2015@gmail.com
 language: zh-CN
 timezone:
 
@@ -46,6 +47,15 @@ highlight:
 # Category & Tag
 default_category: uncategorized
 category_map:
+        读书: reading
+        笔记: note
+        思考: thinking
+        编程: programming
+        英语: English
+        画画: drawing and painting
+        设计: design
+        生活: life
+        其他: other
 tag_map:
 
 # Date / Time format
@@ -74,3 +84,30 @@ deploy:
   type: git
   repo: git@github.com:pigflymoon/pigflymoon.github.io.git
   branch: master
+# Sitemap
+sitemap:
+    path: sitemap.xml
+
+## feed:
+##    type: atom
+##    path: atom:xml
+##    limit: 100
+
+jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: false
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true

@@ -1,4 +1,13 @@
 ---
+layout: post
+title: "作为一个前端，可以如何机智地弄坏一台电脑？"
+date: 2015-07-06 22:30
+comments: true
+reward: true
+tags: 
+	- 编程 
+	- js
+---
 title: Hello Hexo
 ---
 Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
