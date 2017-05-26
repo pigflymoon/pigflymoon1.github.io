@@ -16,3 +16,11 @@ hexo new "文件名"
 > 此命令会在/hexo/source/_posts下创建一个文件名.md文件，然后就可以使用markdown编辑器开始写自己的博客了。
 
 <!--more-->
+{% blockquote 鲁迅, 《记念刘和珍君》%}
+真的猛士，敢于直面惨淡的人生，敢于正视淋漓的鲜血
+{% endblockquote %}
+
+{% blockquote @DevDocs https://twitter.com/devdocs/status/356095192085962752 %}
+NEW: DevDocs now comes with syntax highlighting. http://devdocs.io
+{% endblockquote %}
+
