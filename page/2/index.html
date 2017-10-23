@@ -150,6 +150,278 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-study-notes2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/19/study-notes2/">javascript-callback 回调函数</a>
+    </h1>
+  
+
+            
+            <a href="/2017/07/19/study-notes2/" class="archive-article-date">
+  	<time datetime="2017-07-19T08:21:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-19</time>
+</a>
+            
+        </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            <h1 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> x =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'I am called from inside of x'</span>)</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">let</span> y =<span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'y function'</span>);</div><div class="line">	callback();</div><div class="line">&#125;;</div><div class="line"></div><div class="line">y(x);</div></pre></td></tr></table></figure>
+<p><img src="images/callback1.png" alt=""><br><img src="images/callback2.png" alt=""><br>我们把x作为一个函数体（函数本身）传到y里，而不是执行x（不是把x执行的结果），然后到时候再执行它。</p>
+<h2 id="例子2"><a href="#例子2" class="headerlink" title="例子2"></a>例子2</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> calc = <span class="function"><span class="keyword">function</span> (<span class="params">num1,num2,calcType</span>) </span>&#123;</div><div class="line">    </div><div class="line">  <span class="keyword">if</span>(calcType == <span class="string">"add"</span>)&#123;</div><div class="line">      <span class="keyword">return</span> num1 + num2;</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(calcType === <span class="string">"multiply"</span>)&#123;</div><div class="line">      <span class="keyword">return</span> num1 * num2;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(calc(<span class="number">2</span>,<span class="number">3</span>,<span class="string">'add'</span>));</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a + b;</div><div class="line">  </div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">let</span> multiply = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a * b; </div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">let</span> calc = <span class="function"><span class="keyword">function</span>(<span class="params">num1,num2,callback</span>) </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> callback === <span class="string">"function"</span>)&#123;</div><div class="line">        <span class="keyword">return</span> callback(num1,num2);</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(calc(<span class="number">2</span>,<span class="number">3</span>,add));</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(calc(<span class="number">2</span>,<span class="number">3</span>,<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> a - b;</div><div class="line">&#125;))</div></pre></td></tr></table></figure>
+<p><img src="images/callback3.png" alt=""> </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myArr = [&#123;</div><div class="line">    <span class="attr">num</span>: <span class="number">5</span>,</div><div class="line">    <span class="attr">str</span>: <span class="string">'apple'</span>,</div><div class="line">    &#125;,&#123;</div><div class="line">     <span class="attr">num</span>: <span class="number">7</span>,</div><div class="line">     <span class="attr">str</span>: <span class="string">'cabbage'</span>,</div><div class="line">    &#125;,&#123;</div><div class="line">     <span class="attr">num</span>: <span class="number">1</span>,</div><div class="line">     <span class="attr">str</span>: <span class="string">'ban'</span>,</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">myArr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">val1,val2</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(val1.str &gt; val2.str)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(myArr);</div></pre></td></tr></table></figure>
+            
+
+            
+        </div>
+        <div class="article-info article-info-index">
+            
+            
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">编程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+            
+
+            
+            <p class="article-more-link">
+                <a class="article-more-a" href="/2017/07/19/study-notes2/">展开全文 >></a>
+            </p>
+            
+
+            
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-reading-notes5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/13/reading-notes5/">《超越感觉.批判性思考指南》读书笔记2</a>
+    </h1>
+  
+
+            
+            <a href="/2017/07/13/reading-notes5/" class="archive-article-date">
+  	<time datetime="2017-07-12T22:04:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-13</time>
+</a>
+            
+        </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            <h1 id="ch4-认知意味着什么"><a href="#ch4-认知意味着什么" class="headerlink" title="ch4 认知意味着什么"></a>ch4 认知意味着什么</h1><h2 id="认知的必要条件"><a href="#认知的必要条件" class="headerlink" title="认知的必要条件"></a>认知的必要条件</h2><p>知道不仅包括正确答案，还包括认识到你以及拥有了它。<br>认知通常也意味着——有能力表达知道什么和我们如何得知它。</p>
+<h2 id="我们如何知道"><a href="#我们如何知道" class="headerlink" title="我们如何知道"></a>我们如何知道</h2><p>我们能够要么主动、要么被动地获得知识。</p>
+<ol>
+<li>我们通过直接经验，通过检验和证实想法或通过推理而主动地获取知识。<br>当借助推理这么做时，我们分析问题，考虑所有的事实和可能的解释，并<br>得出合乎逻辑的结论。</li>
+<li>我们通过其他人的告知而被动地获取知识。在课堂上进行的学习，以及<br>在看电视新闻报道、阅读报纸或杂志的那种学习，大部分都是被动获取。<br>我们受被动学习所制约，因而依赖在与朋友和同事的日常交流中进行被动学习，也就不足为怪了。</li>
+</ol>
+<p>被动学习具有严重缺陷，它使我们易于非批判地接受被告知的事，甚至当告诉我们的<br>只是些传闻和谣言的时候也是如此。</p>
+<h2 id="为什么认知是困难的。"><a href="#为什么认知是困难的。" class="headerlink" title="为什么认知是困难的。"></a>为什么认知是困难的。</h2><ol>
+<li>在于未解决的老问题继续抵制解决。</li>
+<li>每天新发生的情况无先例可寻。</li>
+<li>在世代传承时，知识经常被遗忘或被不明智地拒绝。</li>
+</ol>
+<h2 id="知识的障碍"><a href="#知识的障碍" class="headerlink" title="知识的障碍"></a>知识的障碍</h2><p>妨碍知识的习惯</p>
+<p>1.设定<br>设定就是把某事看作理所当然的——也就是随意地把渭北证明或可以合理争论的某事当作真的来接受。<br>    因为设定一般是无意识的活动，所以我们经常意识不到自己的设定和它们对我们的影响。<br>    未予确证的设定的主要负面影响是其扼杀了通向知识的好奇心。</p>
+<p>2.猜想<br>  猜想是提出一个直觉判断或是冒险提出一个对正确性没有任何信心的答案</p>
+
+            
+
+            
+        </div>
+        <div class="article-info article-info-index">
+            
+            
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">思考</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+            
+
+            
+            <p class="article-more-link">
+                <a class="article-more-a" href="/2017/07/13/reading-notes5/">展开全文 >></a>
+            </p>
+            
+
+            
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-think-notes1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/09/think-notes1/">转身之后</a>
+    </h1>
+  
+
+            
+            <a href="/2017/07/09/think-notes1/" class="archive-article-date">
+  	<time datetime="2017-07-08T22:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-09</time>
+</a>
+            
+        </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            <blockquote><p>有些时候转身，也许就是一辈子，只是有些人你再也不想见到，有些人你当时恨不能下一刻就遇见，而时过境迁，渐渐的，见与不见都无所谓了。而还有一些人，我们内心一直希望再重逢。</p>
+</blockquote>
+
+            
+
+            
+        </div>
+        <div class="article-info article-info-index">
+            
+            
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">思考</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随感</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+            
+
+            
+            <p class="article-more-link">
+                <a class="article-more-a" href="/2017/07/09/think-notes1/">展开全文 >></a>
+            </p>
+            
+
+            
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-reading-notes3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/19/reading-notes3/">《学习的艺术》读书笔记1</a>
+    </h1>
+  
+
+            
+            <a href="/2017/06/19/reading-notes3/" class="archive-article-date">
+  	<time datetime="2017-06-19T04:47:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+            
+        </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            <h2 id="将大脑清理干净，为行动留出空间"><a href="#将大脑清理干净，为行动留出空间" class="headerlink" title="将大脑清理干净，为行动留出空间"></a>将大脑清理干净，为行动留出空间</h2><blockquote><p>最理想的做法就是在学习间歇完全放松自己。放下书本；离开课桌；走出图书馆；出去闲逛；<br>两耳不闻窗外事。总之，要让自己忙里偷闲，达到一种平静而慵懒的状态。因为在学习之后会出现某种吸收消化或图像显影之类的后续过程，<br>在此期间，学习的成果会定型、整理，并与你所有的经历连接起来。这样作的时候，大脑必须处于休眠状态。</p>
+</blockquote>
+
+            
+
+            
+        </div>
+        <div class="article-info article-info-index">
+            
+            
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+            
+
+            
+            <p class="article-more-link">
+                <a class="article-more-a" href="/2017/06/19/reading-notes3/">展开全文 >></a>
+            </p>
+            
+
+            
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+  
     <article id="post-study-notes1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -571,14 +843,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">札记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
               </li>
              
@@ -587,11 +851,39 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">札记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">读书</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">心理学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">人性</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">思考</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">插画</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">儿童读物</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,6 +892,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">reading</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">math</a>
               </li>
              
               <li class="article-tag-list-item">
