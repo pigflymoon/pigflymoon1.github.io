@@ -42,6 +42,6 @@ git remote add origin git@github-pig:pig/test.git
 git push origin master
 
 ```
-
+## Don't use git command line and Phpstorm git at same time.
 
 
