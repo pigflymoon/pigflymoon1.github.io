@@ -150,6 +150,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-study-notes2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/08/study-notes2/">javascript-callback 回调函数</a>
+    </h1>
+  
+
+            
+            <a href="/2017/11/08/study-notes2/" class="archive-article-date">
+  	<time datetime="2017-11-07T19:41:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-08</time>
+</a>
+            
+        </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            <h1 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> x =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'I am called from inside of x'</span>)</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">let</span> y =<span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'y function'</span>);</div><div class="line">	callback();</div><div class="line">&#125;;</div><div class="line"></div><div class="line">y(x);</div></pre></td></tr></table></figure>
+<p><img src="images/callback1.png" alt=""><br><img src="images/callback2.png" alt=""><br>我们把x作为一个函数体（函数本身）传到y里，而不是执行x（不是把x执行的结果），然后到时候再执行它。</p>
+<h2 id="例子2"><a href="#例子2" class="headerlink" title="例子2"></a>例子2</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> calc = <span class="function"><span class="keyword">function</span> (<span class="params">num1,num2,calcType</span>) </span>&#123;</div><div class="line">    </div><div class="line">  <span class="keyword">if</span>(calcType == <span class="string">"add"</span>)&#123;</div><div class="line">      <span class="keyword">return</span> num1 + num2;</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(calcType === <span class="string">"multiply"</span>)&#123;</div><div class="line">      <span class="keyword">return</span> num1 * num2;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(calc(<span class="number">2</span>,<span class="number">3</span>,<span class="string">'add'</span>));</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a + b;</div><div class="line">  </div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">let</span> multiply = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a * b; </div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">let</span> calc = <span class="function"><span class="keyword">function</span>(<span class="params">num1,num2,callback</span>) </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> callback === <span class="string">"function"</span>)&#123;</div><div class="line">        <span class="keyword">return</span> callback(num1,num2);</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(calc(<span class="number">2</span>,<span class="number">3</span>,add));</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(calc(<span class="number">2</span>,<span class="number">3</span>,<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> a - b;</div><div class="line">&#125;))</div></pre></td></tr></table></figure>
+<p><img src="images/callback3.png" alt=""> </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myArr = [&#123;</div><div class="line">    <span class="attr">num</span>: <span class="number">5</span>,</div><div class="line">    <span class="attr">str</span>: <span class="string">'apple'</span>,</div><div class="line">    &#125;,&#123;</div><div class="line">     <span class="attr">num</span>: <span class="number">7</span>,</div><div class="line">     <span class="attr">str</span>: <span class="string">'cabbage'</span>,</div><div class="line">    &#125;,&#123;</div><div class="line">     <span class="attr">num</span>: <span class="number">1</span>,</div><div class="line">     <span class="attr">str</span>: <span class="string">'ban'</span>,</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">myArr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">val1,val2</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(val1.str &gt; val2.str)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(myArr);</div></pre></td></tr></table></figure>
+            
+
+            
+        </div>
+        <div class="article-info article-info-index">
+            
+            
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">编程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+            
+
+            
+            <p class="article-more-link">
+                <a class="article-more-a" href="/2017/11/08/study-notes2/">展开全文 >></a>
+            </p>
+            
+
+            
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+  
     <article id="post-reading-notes10" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -468,7 +535,7 @@
 <p>过了一会儿，等我再去看时，发现小鸭子们很开心的在母鸭的身边玩耍着，咦，那些讨厌的公鸭子们都去哪儿了，这次篱笆底下传来一阵嘎嘎叫，啊，这不是那只”鸭妈妈”么，怎么还跟着公鸭子们乱混呢？</p>
 <p>噢，等等，原来是小鸭子们找错妈妈了，它们把一个鸭阿姨当成妈妈了，紧追着”妈妈”不放，生怕妈妈跟着叔叔们跑了，于是就出现了先前的那一幕。好吧，我也跟小鸭子一样弄错了。我也是傻乎乎的小笨鸭。</p>
 <h1 id="从天而降的鸭子"><a href="#从天而降的鸭子" class="headerlink" title="从天而降的鸭子"></a>从天而降的鸭子</h1><p>傍晚时分，我正要拎起水壶准备去给花和菜浇水，一只母鸭子从天而降，飞到了院子里。我让它自个闲逛，我还是浇我的水。等我所有的花和菜都浇完水了。它还一会啄啄草，一会儿在小灌木丛里打探打探，然后活动范围离我越来越近。<br>我琢磨它是打算找我要吃的，但是又不好意思，看着天色也晚了，心想赶紧给它喂点吃的，好让它吃饱了晚上早点回家睡觉，别饿着肚子睡觉。<br>然后我从屋里拿了几片面包，又拿了一个盒装了些清水，端到草地前面的水泥地上。它看到我拿着面包，马上乐颠颠的一扭一扭的就走过来了，我把面包撕成一小块放到水上，<br>它快乐地一边啄食着，一边喝着水。我把剩下的都放盒子里，让它独自去吃，不打扰它进食。然后我就回屋了。透过窗户，看着它转过身，溜达着到处走走，过一会又回到水盆边，继续吃着。<br>天慢慢的黑了，它还没想到回家，不知道是不是天太黑了，已经快八点了，我开了灯，让灯光照着外面。</p>
-<p>过了一会儿，忽然听到一声声比较低沉的公鸭叫，原来一只公鸭兄弟来寻找这只母鸭，它在隔壁邻居家的草地上，一边顺着草地往前走，一边呼叫着。<br>然后这时听到院子里的母鸭也会迎着嘎嘎的叫，好像是说”我在这里”。两只鸭子来呼叫应答着，不一会儿，它俩通过两家的篱笆有个互通的洞口找到了对方，<br>然后互相欢快的打着招呼，估计它们应该是一起回家了。</p>
+<p>过了一会儿，忽然听到一声声比较低沉的公鸭叫，原来一只公鸭兄弟来寻找这只母鸭，它在隔壁邻居家的草地上，一边顺着草地往前走，一边呼叫着。<br>然后这时听到院子里的母鸭也会迎着嘎嘎的叫，好像是说”我在这里”。两只鸭子来呼叫应答着，不一会儿，它俩通过两家的篱笆有个互通的洞口找到了对方，<br>然后互相欢快的打着招呼，估计它们应该是一起回家了。还真挺感人的。</p>
 
             
 
@@ -755,40 +822,34 @@
 
 
   
-    <article id="post-reading-notes7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-dev-notes2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         <header class="article-header">
             
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/26/reading-notes7/">《思考的艺术-非凡大脑养成手册》-读书笔记摘抄</a>
+      <a class="article-title" href="/2017/08/11/dev-notes2/">How to Work with GitHub and Multiple Accounts</a>
     </h1>
   
 
             
-            <a href="/2017/07/26/reading-notes7/" class="archive-article-date">
-  	<time datetime="2017-07-25T21:16:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
+            <a href="/2017/08/11/dev-notes2/" class="archive-article-date">
+  	<time datetime="2017-08-10T20:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
 </a>
             
         </header>
         
         <div class="article-entry" itemprop="articleBody">
             
-            <h2 id="做批判的读者"><a href="#做批判的读者" class="headerlink" title="做批判的读者"></a>做批判的读者</h2><h3 id="批判性阅读"><a href="#批判性阅读" class="headerlink" title="批判性阅读"></a>批判性阅读</h3><blockquote><p>批判的读者判断他们读到的东西，判断标准不是作者的观点和自己的有多相近，而是作者的观点是否正确合理。<br>所以，与其他读者相比，批判的读者比较不容易被欺骗或操纵。</p>
-</blockquote>
-<blockquote><p>看书不反思就像吃东西但不去消化。</p>
-<footer><strong>Edmund Burker</strong><cite>英国政治家</cite></footer></blockquote>
-<h3 id="进行重要区分"><a href="#进行重要区分" class="headerlink" title="进行重要区分"></a>进行重要区分</h3><ul>
-<li>区分人和观点 如果不将人和观点分开，你的判断就一定会被扭曲。要清楚你对发言者的认识，并努力完善这一认识。<br>对你反感的人要更仔细地倾听，对你肯定的人则要更批判性地倾听。尽可能严格地判断别人的观点，但只是判断它们作为观点的价值。</li>
-<li>区分喜好和判断。不论何时有人对某件事情合理与否或某个行为是否明智发表自己的观点，作为一个批判的思考者，你都<br>不仅有权而且有义务根据论据评判这个观点。要成为审慎的思考者，你就必须这么做。</li>
-<li>区分事实和解读 事实是确定已知的东西，是客观可证实的。解读是对意义的解释。事实和解读常常交织在一起，<br>使我们很难区分。</li>
-<li>区分字面意思和反语 </li>
-<li>区分表达方式和表达效果 在作出判断前将形式和内涵分开。</li>
-<li>区分语言和现实<br>语言是我们理解现实并与他人沟通的主要方式。言语来得那么自然，与它们所表示的现实有如此密切的联想，我们也许不知不自觉地<br>会将它们视为现实。但这是一个代价巨大的错误。一个民族的语言是根据其见识和观察发展起来的，由于没有哪个单独的群体<br>能对一切现实有同样深入的认识，所以没有一种语言完全适合表达一切现实。</li>
-</ul>
-<h3 id="如何进行批判性阅读"><a href="#如何进行批判性阅读" class="headerlink" title="如何进行批判性阅读"></a>如何进行批判性阅读</h3><p>略读、反思、阅读和评价</p>
-
+            <h2 id="Create-a-New-SSH-Key"><a href="#Create-a-New-SSH-Key" class="headerlink" title="Create a New SSH Key"></a>Create a New SSH Key</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &apos;pig@pig.com&apos;</div></pre></td></tr></table></figure>
+<p>save file as id_rsa_pig to ~/.ssh/id_rsa_pig</p>
+<h2 id="Attach-the-new-key"><a href="#Attach-the-new-key" class="headerlink" title="Attach the new key"></a>Attach the new key</h2><p>copy id_rsa_pig.pub entire string into git hub -&gt;SSH and GPG Keys-&gt;New SSH key<br>then in Terminal run : ssh-add ~/.ssh/id_rsa_pig</p>
+<h2 id="create-a-config-file"><a href="#create-a-config-file" class="headerlink" title="create a config file"></a>create a config file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">nano ~/.ssh/config</div><div class="line">Host github-pig</div><div class="line">  HostName github.com</div><div class="line">  User git</div><div class="line">  IdentityFile ~/.ssh/id_rsa_pig</div></pre></td></tr></table></figure>
+<h2 id="Try-it-out"><a href="#Try-it-out" class="headerlink" title="Try it out"></a>Try it out</h2><p>make<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mkdir test</div><div class="line">cd test</div><div class="line">git init</div><div class="line">git config user.name &quot;pig&quot;</div><div class="line">git config user.email pig@pig.com</div></pre></td></tr></table></figure></p>
+<p>Login to your company account, create a new repository, give it a name of “test,” and then return to the Terminal and push your git repo to GitHub.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m &apos;first commit&apos;</div><div class="line">git remote add origin git@github-pig:pig/test.git</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<h2 id="Don’t-use-git-command-line-and-Phpstorm-git-at-same-time"><a href="#Don’t-use-git-command-line-and-Phpstorm-git-at-same-time" class="headerlink" title="Don’t use git command line and Phpstorm git at same time."></a>Don’t use git command line and Phpstorm git at same time.</h2>
             
 
             
@@ -801,11 +862,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">读书</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">思考</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
@@ -815,115 +876,7 @@
 
             
             <p class="article-more-link">
-                <a class="article-more-a" href="/2017/07/26/reading-notes7/">展开全文 >></a>
-            </p>
-            
-
-            
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-reading-notes6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        <header class="article-header">
-            
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/26/reading-notes6/">《思考的艺术-非凡大脑养成手册》-读书笔记摘抄</a>
-    </h1>
-  
-
-            
-            <a href="/2017/07/26/reading-notes6/" class="archive-article-date">
-  	<time datetime="2017-07-25T20:55:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-            
-        </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-            <h1 id="第三章拓宽视野，打破局限"><a href="#第三章拓宽视野，打破局限" class="headerlink" title="第三章拓宽视野，打破局限"></a>第三章拓宽视野，打破局限</h1><blockquote><p>我们常常像这六个盲人一样通过自己的视野看待世界。我们视野狭窄，思考也因此受到影响。视野狭窄带给我们的第一个，<br>也许是最严重的影响在于我们对自己的潜力的看法。很多人从未彻底地了解自己，我们只看到自己是什么样子，<br>从未意识到自己有能力变成什么样子，我们从未觉察我们现在的样子有多少是偶然事件的结果。</p>
-</blockquote>
-<blockquote><p>研究表明，困惑、失败、绝望的反应并不是天生的，它们是习得的。在一项研究中，人们被授以问题并被告知这些问题可以解决，<br>但实际上这些问题是无法解决的。当努力解决问题但失败后，实验对象经历了越来越多的挫败感，知道最终绝望并放弃。<br>同样还是这些人，这次被授以的是可以解决的问题，但他们仍然表现出绝望，而且没有真正努力就放弃了。</p>
-</blockquote>
-<blockquote><p>对孩子要求不一致、反应无法预测的负面、关注学生消极面多过积极面的老师，忽略队员的真正表现或贡献的教练、活动领导人都<br>可能剥夺我们的自信，导致我们养成失败的习惯，使我们看不到自己的潜力。<br>诸多成功者区别与他人的一个特征，是他们拒绝以他人的评价来界定自己。</p>
-<p>不应该低谷自己，你的潜力肯定比你曾经以为的大得多。因此当你发现自己在说”我绝对做不了”或者”我没有能力做”的时候<br>要记住过去无法主宰未来。</p>
-</blockquote>
-<blockquote><p>要成为一个个体，意味着不仅仅要声称独立，还要实现独立。下面三个步骤能帮助你开始获取个性：<br>1.承认塑造你思想的影响力。对自己说：”我的头脑充满了他人的观点和立场，我不加批判地接受是因为我年轻且信任他人。<br>很多观点和立场现在都变成了坚定的原则和信念，但其中有一些是错误的或没有价值的。”列出你特别崇拜或者亲近的人。<br>思考每个人的信念和行为，正确地判断这些信念和行为是如何影响你的。<br>2.整理并评价你的观点和立场，甚至是你最珍视的那些。将你的观点和立场与其他人的进行比较。验证你的信念，<br>不是根据它们与其他观点的相似性或可比性，而要根据有据可查的合理性。<br>3.选择最好的观点和立场。尽可能客观地判断哪些观点值得认可。哪些立场值得努力获取。记住，当你为了找到证明<br>观点合理的证据，顶住习惯的压力，改变你对某个主题或争议的思维方式，你就是最具个性的。</p>
-</blockquote>
-<h2 id="找出妨碍思考的习惯"><a href="#找出妨碍思考的习惯" class="headerlink" title="找出妨碍思考的习惯"></a>找出妨碍思考的习惯</h2><ul>
-<li>我的比较好心理<ul>
-<li>这个习惯是十分自认的，它始于幼年。不论联想到什么，都是我们的自我延伸，宣称优越性就是一种自我表达。<br>这个习惯不会随着我们长大轻易消失。这种心理妨碍了我们的思考，破坏了我们的客观性，使我们更喜欢能满足自我的错误而<br>不是令人不快的现实。要成为优秀的思考者，你必须学会摆脱这种习惯，不让自我干扰你对整理的追寻。</li>
-</ul>
-</li>
-<li>挽回面子 <ul>
-<li>是在我们说过或做过可能破坏我们的自我形象或在他人心中的形象的事情后产生的。</li>
-<li>挽回面子的一个普遍形式是很多儿童和成人都曾用过的借口——这不是我的错，是他（她）让我这么做的”或者” 这不是我的错，<br>我没有别的选择。</li>
-<li>另一个更危险的形式被称为合理化。合理化是对真相的一种不诚实的替代，我们用合理化”维护我们的观点，而不是找出事情的真相”。</li>
-<li>合理化和诚实的推理的区别方法。<br>1.如果 现有证据后有观点，先分析再判断，你就是在推理。<br>2.如果 先有观点后有论据，先决定相信什么，再寻找证据为你的观点辩护，你就是在合理化。  </li>
-</ul>
-</li>
-<li>拒绝改变<ul>
-<li>不经过客观的分析，就拒绝新观点和行动的新方法的倾向。</li>
-<li>拒绝改变的倾向，原因之一是纯粹的懒惰。已经习惯了用一种方式看待事物，我们厌恶被要求用另一种方式看待它们。<br>这么做会让我们打破自己的常规’</li>
-<li>另一个原因是过度重视传统。</li>
-<li>更加重要的原因是恐惧。我们每个人都会形成思考和行为的习惯，这些习惯和旧鞋一样十分舒适。要用新事物代替这些习惯，<br>这种想法是令人害怕的：”我怎么能应付每天的状况呢？”我们的想象力制造出无数的忧虑，因为含糊不明，它们更显得可怕，<br>于是我们选择拒绝而不是欢迎新事物。有时我们会假装正直诚实、按原则行事，以此避免感到羞耻。</li>
-</ul>
-</li>
-<li>墨守成规<ul>
-<li>有害的墨守成规是指我们的所作所为并非自愿，而是为了归属于某个团体、避免格格不入。这样的墨守成规是怯懦的行为。<br>为了蝇头小利牺牲掉自己的独立性，不久就会让我们更加关注他人的想法，而非正确、真实和合理的事物。一旦开始墨守成规，<br>我们很快就会发现自己的言行不是我们认为最好的，而是我们认为其他人要的或期待我们有的言行，这会让我们的创造性与批判性<br>思考能力变得迟钝。</li>
-</ul>
-</li>
-<li>刻板化<ul>
-<li>极端概括：一些概括超越了合理的界限</li>
-<li>最普遍的刻板化是人种、宗教和民族的刻板化。</li>
-<li>刻板化为观念设立了一个完美整洁的心理仓库。每件东西都有自己的存放位置，没有比较、没有分类、权衡或筛选，<br>只有存储；每件东西都经过了预先分拣、预先确定、预先判断。因此，刻板化妨碍了心理的动态活动，使丰富多彩的生活、<br>我们周围各种各样的人和环境被迫归入现成的范畴。</li>
-</ul>
-</li>
-<li>自我欺骗<ul>
-<li>要成为优秀的思考者，必须能够诚实地判断解决问题需要哪些信息，并在获取了这些信息后，对它们进行公正的评价。<br>而只有学会对自己诚实，才能做到这一点。</li>
-</ul>
-</li>
-</ul>
-<blockquote><p>只要人们思考让他们高兴的意见，从而相信这个意见，人们就是在”思意信”。<br>抗拒它最好的方法就是形成反思你的思考这一习惯。</p>
-<p>就是要弄清你对问题和争议的第一印象，尤其是那些促使你不分析证据或不权衡双方论点就采取立场的印象。面对这类印象，<br>要控制而不是服从它们，要迫使自己保持客观。</p>
-</blockquote>
-
-            
-
-            
-        </div>
-        <div class="article-info article-info-index">
-            
-            
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">读书</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">思考</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-            
-
-            
-            <p class="article-more-link">
-                <a class="article-more-a" href="/2017/07/26/reading-notes6/">展开全文 >></a>
+                <a class="article-more-a" href="/2017/08/11/dev-notes2/">展开全文 >></a>
             </p>
             
 
@@ -1034,6 +987,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
@@ -1054,6 +1015,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">读书</a>
               </li>
              
@@ -1070,23 +1039,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">思考</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">插画</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">儿童读物</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1099,6 +1052,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">插画</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">儿童读物</a>
               </li>
              
               <li class="article-tag-list-item">

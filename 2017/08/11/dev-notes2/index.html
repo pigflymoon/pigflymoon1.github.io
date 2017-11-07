@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://lucyjourney.com">
-  <title>Tag: 编程 | Lucy&#39;s journey</title>
+  <title>How to Work with GitHub and Multiple Accounts | Lucy&#39;s journey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="爱哭爱闹爱笑爱吃爱读书爱玩">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lucy&#39;s journey">
-<meta property="og:url" content="http://lucyjourney.com/tags/编程/index.html">
+  <meta name="description" content="Create a New SSH Key1ssh-keygen -t rsa -C &amp;apos;pig@pig.com&amp;apos; save file as id_rsa_pig to ~/.ssh/id_rsa_pig Attach the new keycopy id_rsa_pig.pub entire string into git hub -&amp;gt;SSH and GPG Keys-&amp;g">
+<meta name="keywords" content="ssh,git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Work with GitHub and Multiple Accounts">
+<meta property="og:url" content="http://lucyjourney.com/2017/08/11/dev-notes2/index.html">
 <meta property="og:site_name" content="Lucy&#39;s journey">
-<meta property="og:description" content="爱哭爱闹爱笑爱吃爱读书爱玩">
+<meta property="og:description" content="Create a New SSH Key1ssh-keygen -t rsa -C &amp;apos;pig@pig.com&amp;apos; save file as id_rsa_pig to ~/.ssh/id_rsa_pig Attach the new keycopy id_rsa_pig.pub entire string into git hub -&amp;gt;SSH and GPG Keys-&amp;g">
+<meta property="og:updated_time" content="2017-11-07T19:50:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lucy&#39;s journey">
-<meta name="twitter:description" content="爱哭爱闹爱笑爱吃爱读书爱玩">
+<meta name="twitter:title" content="How to Work with GitHub and Multiple Accounts">
+<meta name="twitter:description" content="Create a New SSH Key1ssh-keygen -t rsa -C &amp;apos;pig@pig.com&amp;apos; save file as id_rsa_pig to ~/.ssh/id_rsa_pig Attach the new keycopy id_rsa_pig.pub entire string into git hub -&amp;gt;SSH and GPG Keys-&amp;g">
   
     <link rel="alternative" href="/atom.xml" title="Lucy&#39;s journey" type="application/atom+xml">
   
@@ -148,110 +150,148 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
+            <article id="post-dev-notes2" class="article article-type-post " itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
             
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/08/study-notes2/" class="archive-article-date">
-  	<time datetime="2017-11-07T19:41:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/08/study-notes2/">javascript-callback 回调函数</a>
+    <h1 class="article-title" itemprop="name">
+      How to Work with GitHub and Multiple Accounts
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+            
+            <a href="/2017/08/11/dev-notes2/" class="archive-article-date">
+  	<time datetime="2017-08-10T20:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
+</a>
+            
+        </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            <h2 id="Create-a-New-SSH-Key"><a href="#Create-a-New-SSH-Key" class="headerlink" title="Create a New SSH Key"></a>Create a New SSH Key</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &apos;pig@pig.com&apos;</div></pre></td></tr></table></figure>
+<p>save file as id_rsa_pig to ~/.ssh/id_rsa_pig</p>
+<h2 id="Attach-the-new-key"><a href="#Attach-the-new-key" class="headerlink" title="Attach the new key"></a>Attach the new key</h2><p>copy id_rsa_pig.pub entire string into git hub -&gt;SSH and GPG Keys-&gt;New SSH key<br>then in Terminal run : ssh-add ~/.ssh/id_rsa_pig</p>
+<h2 id="create-a-config-file"><a href="#create-a-config-file" class="headerlink" title="create a config file"></a>create a config file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">nano ~/.ssh/config</div><div class="line">Host github-pig</div><div class="line">  HostName github.com</div><div class="line">  User git</div><div class="line">  IdentityFile ~/.ssh/id_rsa_pig</div></pre></td></tr></table></figure>
+<h2 id="Try-it-out"><a href="#Try-it-out" class="headerlink" title="Try it out"></a>Try it out</h2><p>make<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mkdir test</div><div class="line">cd test</div><div class="line">git init</div><div class="line">git config user.name &quot;pig&quot;</div><div class="line">git config user.email pig@pig.com</div></pre></td></tr></table></figure></p>
+<p>Login to your company account, create a new repository, give it a name of “test,” and then return to the Terminal and push your git repo to GitHub.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m &apos;first commit&apos;</div><div class="line">git remote add origin git@github-pig:pig/test.git</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<h2 id="Don’t-use-git-command-line-and-Phpstorm-git-at-same-time"><a href="#Don’t-use-git-command-line-and-Phpstorm-git-at-same-time" class="headerlink" title="Don’t use git command line and Phpstorm git at same time."></a>Don’t use git command line and Phpstorm git at same time.</h2>
+            
+
+            
+        </div>
+        <div class="article-info article-info-index">
+            
+            
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">编程</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+            
 
+            
+
+            
+            
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/07/study-notes1/" class="archive-article-date">
-  	<time datetime="2017-06-07T09:03:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
-</a>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://lucyjourney.com/2017/08/11/dev-notes2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+            
+            <div class="clearfix"></div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/07/study-notes1/">Blob是个啥</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">编程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+    </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+
+<nav id="article-nav">
+  
+    <a href="/2017/08/17/travel-notes-fiji/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          斐济旅游
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/26/reading-notes7/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《思考的艺术-非凡大脑养成手册》-读书笔记摘抄</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -274,9 +314,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
