@@ -22,10 +22,9 @@ Host github-pig
   HostName github.com
   User git
   IdentityFile ~/.ssh/id_rsa_pig
-
+  
 ```
 ## Try it out
-make 
 ```
 mkdir test
 cd test
