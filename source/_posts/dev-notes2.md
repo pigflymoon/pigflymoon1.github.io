@@ -6,7 +6,6 @@ tags:
 	-  ssh
 	-  git
 ---
-    
 ## Create a New SSH Key
 ```
 ssh-keygen -t rsa -C 'pig@pig.com'
