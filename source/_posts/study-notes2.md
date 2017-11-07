@@ -28,6 +28,7 @@ y(x);
 ![](images/callback2.png) 
 我们把x作为一个函数体（函数本身）传到y里，而不是执行x（不是把x执行的结果），然后到时候再执行它。
 ## 例子2
+
 ```javascript
 let calc = function (num1,num2,calcType) {
     
